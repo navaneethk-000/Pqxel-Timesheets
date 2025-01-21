@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { ImBrightnessContrast } from "react-icons/im";
+import { avatar } from "../assets";
 function Main() {
   const [rows, setRows] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -66,27 +68,52 @@ function Main() {
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Header Section */}
       <div className="bg-white p-4 rounded shadow mb-4">
-        <h1 className="text-2xl font-bold mb-2">Timesheet &gt; Moin &gt; Edit</h1>
-        <p className="text-gray-600 mb-2">
-          Assigned Tickets: 48 | Moved Tickets: 20
-        </p>
-      
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-[24px] font-bold mb-2">
+              Timesheet &gt; Moin &gt; Edit
+            </h1>
+            <p className="text-gray-600 mb-2 text-[20px]">
+              Assigned Tickets: 48 | Moved Tickets: 20
+            </p>
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="w-[48px] h-[49px] text-white text-[25px] rounded-[15px] bg-[#1666FE] flex justify-center items-center"><IoMdNotificationsOutline/></div>
+            <div className="w-[48px] h-[49px] text-white text-[25px] rounded-[15px] bg-[#1666FE] flex justify-center items-center"><ImBrightnessContrast/></div>
+            <div className="rounded-full flex justify-center items-center"><img src={avatar} alt="" /></div>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center">
+          <h1 className="text-[40px] font-bold">Moin</h1>
+          <div className="flex gap-5">
+            <button
+              onClick={handleAddRow}
+              className="bg-white text-[#1666FE] px-4 rounded border-[2px] border-[#1666FE] font-medium hover:bg-blue-600 hover:text-white text-[15px] w-[99px] h-[32px] text-center"
+            >
+              Add Row
+            </button>
+            <button className="text-white bg-[#1666FE] px-4 rounded border-[2px] border-[#1666FE] font-medium hover:bg-blue-600 hover:text-white text-[15px] w-[99px] h-[32px] text-center">
+              Submit
+            </button>
+          </div>
+        </div>
         {Object.entries(calculateTotalTimeByDate()).map(([date, total]) => (
-              // <li key={date} className="text-gray-700">
-              //   {date}: {total} min
-              // </li>
-              <p key={date} className="text-lg font-medium"> Total Time: Today - {total} | This Week - 20 Hrs | This Month(Till Date) - 240 Hrs</p>
-            ))}
-          {/* Total Time: Today - 120 Min | This Week - 20 Hrs | This Month(Till Date) - 240 Hrs */}
-        
+          <p key={date} className="text-lg font-medium">
+            {" "}
+            Total Time: Today - {total} | This Week - 20 Hrs | This Month(Till
+            Date) - 240 Hrs
+          </p>
+        ))}
+        {/* Total Time: Today - 120 Min | This Week - 20 Hrs | This Month(Till Date) - 240 Hrs */}
       </div>
 
       {/* Table Section */}
       <div className="bg-white rounded shadow p-4">
         <table className="w-full border border-gray-300">
           <thead>
-            <tr className="bg-blue-100">
-              <th className="border px-4 py-2">Select</th>
+            <tr className="bg-[#1666FE] text-white">
+              <th className="border px-4 py-2"></th>
               <th className="border px-4 py-2">Meeting Date</th>
               <th className="border px-4 py-2">Activity Date</th>
               <th className="border px-4 py-2">Time Start</th>
@@ -102,6 +129,7 @@ function Main() {
                 <td className="border px-4 py-2 text-center">
                   <input
                     type="checkbox"
+                    className="bg-green-500 w-[25px] h-[25px]"
                     checked={selectedRows.includes(index)}
                     onChange={() => handleCheckboxChange(index)}
                   />
@@ -110,7 +138,9 @@ function Main() {
                   <input
                     type="date"
                     value={row.meetingDate}
-                    onChange={(e) => handleChange(index, "meetingDate", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "meetingDate", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -118,7 +148,9 @@ function Main() {
                   <input
                     type="date"
                     value={row.activityDate}
-                    onChange={(e) => handleChange(index, "activityDate", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "activityDate", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -126,7 +158,9 @@ function Main() {
                   <input
                     type="time"
                     value={row.startTime}
-                    onChange={(e) => handleChange(index, "startTime", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "startTime", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -134,7 +168,9 @@ function Main() {
                   <input
                     type="time"
                     value={row.endTime}
-                    onChange={(e) => handleChange(index, "endTime", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "endTime", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -145,7 +181,9 @@ function Main() {
                   <input
                     type="text"
                     value={row.workType}
-                    onChange={(e) => handleChange(index, "workType", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "workType", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -153,7 +191,9 @@ function Main() {
                   <input
                     type="text"
                     value={row.comments}
-                    onChange={(e) => handleChange(index, "comments", e.target.value)}
+                    onChange={(e) =>
+                      handleChange(index, "comments", e.target.value)
+                    }
                     className="w-full border rounded px-2 py-1"
                   />
                 </td>
@@ -162,47 +202,23 @@ function Main() {
           </tbody>
         </table>
 
-        {/* Total Time by Date Section */}
-          {/* <div className="mt-4">
-            
-            <ul className="list-disc list-inside bg-gray-50 p-4 rounded">
-              {Object.entries(calculateTotalTimeByDate()).map(([date, total]) => (
-                <li key={date} className="text-gray-700">
-                  {date}: {total} min
-                </li>
-              ))}
-            </ul>
-          </div> */}
-
-        {/* Action Buttons */}
-        <div className="flex justify-end gap-4 mt-4">
-          <button
-            onClick={handleAddRow}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Add Row
-          </button>
+        <div className="flex justify-center gap-4 mt-4">
           {selectedRows.length > 0 && (
-            <>
+            <div className="flex gap-5 mt-10">
               <button
                 onClick={handleCopyRows}
-                className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+                className="text-white bg-[#1666FE] px-4 rounded border-[2px] border-[#1666FE] font-medium hover:bg-blue-600 hover:text-white text-[15px] w-[99px] h-[32px] text-center"
               >
                 Copy
               </button>
               <button
                 onClick={handleDeleteRows}
-                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                className="text-white bg-[#1666FE] px-4 rounded border-[2px] border-[#1666FE] font-medium hover:bg-blue-600 hover:text-white text-[15px] w-[99px] h-[32px] text-center"
               >
                 Delete
               </button>
-            </>
+            </div>
           )}
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            Submit
-          </button>
         </div>
       </div>
     </div>
