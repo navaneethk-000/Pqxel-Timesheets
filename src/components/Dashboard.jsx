@@ -7,9 +7,7 @@ function Dashboard() {
       {/* Sidebar */}
       <Sidebar />
 
-      
       <div className="flex flex-col w-full">
-       
         <Outlet />
       </div>
     </div>
