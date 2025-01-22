@@ -242,8 +242,8 @@ function Main() {
       return;
     }
 
-    const email1 = "navaneethk969@gmail.com";
-    const email2 = "navaneethk969@gmail.com";
+    const email1 = "someone@gmail.com";
+    const email2 = "someone@gmail.com";
     const subject = "Timesheet Submission";
     const body = rows
       .map(
@@ -383,7 +383,7 @@ Comments: ${row.comments}\n\n`
         <table className="w-full border border-gray-300">
           <thead>
             <tr className="bg-[#1666FE] text-white">
-              <th className="border px-4 py-2"></th>
+              <th className="border px-4 py-2">Checkitb</th>
               <th className="border px-4 py-2">Meeting Date</th>
               <th className="border px-4 py-2">Activity Date</th>
               <th className="border px-4 py-2">Time Start</th>
