@@ -105,7 +105,7 @@ Comments: ${row.comments}\n\n`
               Timesheet &gt; Moin &gt; Edit
             </h1>
             <p className="text-gray-600 mb-2 text-[20px]">
-              Assigned Tickets: 48 | Moved Tickets: 20
+              Assigned Tickets: 48 | Moved Tickets: 21
             </p>
           </div>
           <div className="flex items-center gap-6">
